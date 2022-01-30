@@ -5,7 +5,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SalesforceLoginPage extends BasePage {
 
-
     private static final String BASE_URN = "https://login.salesforce.com/";
 
     public static final By USERNAME = By.id("username");

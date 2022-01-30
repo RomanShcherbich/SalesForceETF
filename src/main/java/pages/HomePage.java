@@ -1,10 +1,13 @@
 package pages;
 
+import components.MainMenuComponent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class HomePage extends BasePage {
+
+    public MainMenuComponent menu;
 
     private static final String BASE_URN = "https://nonamecomp.lightning.force.com/lightning/page/home";
 
@@ -12,6 +15,7 @@ public class HomePage extends BasePage {
 
     public HomePage(WebDriver driver) {
         super(driver);
+        menu = new MainMenuComponent(driver);
     }
 
     @Override

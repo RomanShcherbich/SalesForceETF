@@ -19,6 +19,7 @@ public class MainSteps extends AbstractStep {
 
     public void openSaleforceLoginPage() {
         loginPage = new SalesforceLoginPage(driver);
+        loginPage.setExplicitlyWaitTimeout(5);
         loginPage.openPage();
         validatePageIsLoaded(loginPage);
     }
@@ -29,5 +30,10 @@ public class MainSteps extends AbstractStep {
         validatePageIsLoaded(homePage);
     }
 
+    public void openAccountPage() {
+        homePage.menu.openAccountPage();
+        accountPage = new AccountPage(driver);
+        validatePageIsLoaded(accountPage);
+    }
 
 }

@@ -1,27 +1,22 @@
 package pages;
 
+import components.AbstractComponent;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
-public abstract class BasePage {
-
-    WebDriver driver;
-    WebDriverWait explicitlyWait;
+public abstract class BasePage extends AbstractComponent {
 
     public BasePage(WebDriver driver) {
-        this.driver = driver;
-        this.explicitlyWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        super(driver);
     }
 
     abstract public void waitPageLoaded();
 
     abstract public BasePage openPage();
 
-    public boolean isPageLoaded() {
+    @Override
+    public boolean isComponentDisplayed() {
         try {
             waitPageLoaded();
         } catch (TimeoutException ex) {
@@ -29,6 +24,16 @@ public abstract class BasePage {
             return false;
         }
         return true;
+    }
+
+    public boolean isPageLoaded() {
+        return isComponentDisplayed();
+    }
+
+    public boolean waitForPageLoaded() {
+        String state = ((JavascriptExecutor) driver).executeScript("return document.readyState").toString();
+        System.out.println("JAVA SCRIPT WAITER = ".concat(state));
+        return state.equals("complete");
     }
 
 }

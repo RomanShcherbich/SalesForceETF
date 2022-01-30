@@ -21,8 +21,9 @@ public class BaseTest {
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
         ChromeOptions chromeOptions = new ChromeOptions();
 //        chromeOptions.addArguments("--headless");
-//        chromeOptions.addArguments("--ignore-popup-blocking");
-//        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("--ignore-popup-blocking");
+        chromeOptions.addArguments("--ignore-certificate-errors");
         driver = new ChromeDriver(chromeOptions);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         mainSteps = new MainSteps(driver);
