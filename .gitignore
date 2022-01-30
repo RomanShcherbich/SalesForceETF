@@ -1,0 +1,5 @@
+# Project exclude paths
+/target/
+/.idea/
+/saleforce-wrapped-elements.iml
+/src/test/resources/chromedriver
