@@ -9,6 +9,7 @@ public class AccountPage extends BasePage {
     private static final String BASE_URN = "https://nonamecomp.lightning.force.com/lightning/o/Account/list?filterName=Recent";
 
     private static final By HEADER = By.xpath("//h1[contains(.,'Account')]");
+    private static final By NEW_BUTTON = By.cssSelector("[title='New']");
 
     public AccountPage(WebDriver driver) {
         super(driver);
@@ -23,6 +24,10 @@ public class AccountPage extends BasePage {
     public BasePage openPage() {
         driver.get(BASE_URN);
         return this;
+    }
+
+    public void openNewAccountForm() {
+        driver.findElement(NEW_BUTTON).click();
     }
 
 }

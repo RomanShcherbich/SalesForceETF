@@ -6,7 +6,11 @@ public class AddAccountTest extends BaseTest {
 
     @Test
     public void addNewAccountTest() {
-        mainSteps.openSaleforceLoginPage();
+        mainSteps
+            .openSaleforceLoginPage()
+            .loginWithValidCreds()
+            .openAccountPage()
+            .createNewAccount();
     }
 
 

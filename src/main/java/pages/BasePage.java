@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,7 +13,7 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.explicitlyWait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        this.explicitlyWait = new WebDriverWait(driver, Duration.ofSeconds(40));
     }
 
     abstract public void waitPageLoaded();
@@ -25,7 +24,6 @@ public abstract class BasePage {
         try {
             waitPageLoaded();
         } catch (TimeoutException ex) {
-            System.out.println("EXCEPTION HAS BEEN CAUGHT");
             return false;
         }
         return true;
